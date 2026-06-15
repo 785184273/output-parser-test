@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'
 import path from 'path'
 import { ChatOpenAI } from '@langchain/openai'
-import { StructuredOutputParser } from '@langchain/core/output_parsers'
 import z from 'zod'
 
 const __dirname = import.meta.dirname
@@ -31,5 +30,5 @@ const scientistSchema = z.object({
 const structuredModel = model.withStructuredOutput(scientistSchema)
 
 // 调用模型
-const result = await structuredModel.invoke("介绍一下爱因斯坦 json")
+const result = await structuredModel.invoke("介绍一下爱因斯坦")
 console.log("结构化结果: ", JSON.stringify(result, null, 2))
